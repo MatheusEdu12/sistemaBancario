@@ -41,7 +41,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jtfNome = new javax.swing.JTextField();
         jbSalvar = new javax.swing.JButton();
         jbVoltar = new javax.swing.JButton();
-        jbLimpar = new javax.swing.JButton();
 
         jbVoltar1.setBackground(java.awt.Color.lightGray);
         jbVoltar1.setText("Voltar");
@@ -89,15 +88,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        jbLimpar.setBackground(java.awt.Color.lightGray);
-        jbLimpar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jbLimpar.setText("Limpar");
-        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimparActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,17 +110,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbLimpar)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlSenha)
-                                    .addComponent(jlCPF)
-                                    .addComponent(jlNome))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jlSenha)
+                            .addComponent(jlCPF)
+                            .addComponent(jlNome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -153,9 +140,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlSenha))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbLimpar)
-                .addGap(56, 56, 56)
+                .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbSalvar)
                     .addComponent(jbVoltar))
@@ -185,26 +170,28 @@ public class CadastroUsuario extends javax.swing.JFrame {
         
         Clientes cliente = new Clientes(nome, cpf, senha);
   
-        service.inserirCliente(cliente);
+        boolean sucesso = service.inserirCliente(cliente);
+        
+        if (sucesso) {
+            jtfNome.setText("");
+            jtfCPF.setText("");
+            jtfSenha.setText("");
+
+            new Login().setVisible(true);
+            dispose();
+        }
         
         
-        
-        jtfNome.setText("");
-        jtfCPF.setText("");
-        jtfSenha.setText("");
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
-        // TODO add your handling code here:
+        new Login().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jbVoltarActionPerformed
 
     private void jbVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbVoltar1ActionPerformed
-
-    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,7 +232,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JButton jbVoltar;
     private javax.swing.JButton jbVoltar1;

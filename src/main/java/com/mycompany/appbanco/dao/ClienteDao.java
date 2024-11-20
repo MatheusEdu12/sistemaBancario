@@ -84,5 +84,18 @@ public class ClienteDao {
         em.merge(cliente);  // Atualiza o cliente no banco
         em.getTransaction().commit();
     }
+
+    public boolean login(String cpf, String senha) {
+        try {
+            Clientes cliente = em.createQuery("SELECT c FROM Clientes c WHERE c.cpf = :cpf AND c.senha = :senha", Clientes.class)
+                                 .setParameter("cpf", cpf)
+                                 .setParameter("senha", senha)
+                                 .getSingleResult();
+            return cliente != null;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
+
     
 }

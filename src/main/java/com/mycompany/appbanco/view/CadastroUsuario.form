@@ -77,20 +77,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jbLimpar" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jlSenha" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlCPF" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlNome" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfCPF" min="-2" pref="473" max="-2" attributes="0"/>
-                                      <Component id="jtfSenha" min="-2" pref="473" max="-2" attributes="0"/>
-                                      <Component id="jtfNome" min="-2" pref="473" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jlSenha" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlCPF" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlNome" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jtfCPF" min="-2" pref="473" max="-2" attributes="0"/>
+                              <Component id="jtfSenha" min="-2" pref="473" max="-2" attributes="0"/>
+                              <Component id="jtfNome" min="-2" pref="473" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -122,9 +117,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jbLimpar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -208,20 +201,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVoltarActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jbLimpar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Liberation Sans" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Limpar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimparActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

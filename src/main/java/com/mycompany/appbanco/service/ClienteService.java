@@ -2,6 +2,7 @@ package com.mycompany.appbanco.service;
 
 import com.mycompany.appbanco.dao.ClienteDao;
 import com.mycompany.appbanco.model.Clientes;
+import com.mycompany.appbanco.view.PaginaPrincipal;
 import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 
@@ -13,23 +14,35 @@ public class ClienteService {
     public ClienteService() {
         clienteDao = new ClienteDao();
     }
+    
+    public boolean logar(String cpf, String senha) {
+        
+        boolean sucesso = clienteDao.login(cpf, senha);  
+        if (sucesso) {
+            return sucesso;
+            
+        }
+        JOptionPane.showMessageDialog(null, "CPF ou Senha não localizados..");
+        return false;
+    }
 
     // Método para inserir um cliente
-    public void inserirCliente(Clientes cliente) {
-        if (cliente == null) {
+    public boolean inserirCliente(Clientes cliente) {
+        if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty() || cliente.getSenha().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Dados inválidos");
-            return;
+            return false;
         }
         
         // Chama o método de inserção no DAO
         clienteDao.inserir(cliente);
         JOptionPane.showMessageDialog(null, "Cliente inserido com sucesso!");
+        return true;
     }
 
     // Método para deletar um cliente
     public void deletarCliente(Long clienteId) {
         Clientes cliente = clienteDao.findById(clienteId);
-        if (cliente == null) {
+        if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty() || cliente.getSenha().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cliente não localizado.");
             return;
         }
@@ -47,7 +60,7 @@ public class ClienteService {
         }
 
         Clientes cliente = clienteDao.findById(clienteId);
-        if (cliente == null) {
+        if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty() || cliente.getSenha().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cliente não localizado.");
             return;
         }
@@ -70,7 +83,7 @@ public class ClienteService {
         }
 
         Clientes cliente = clienteDao.findById(clienteId);
-        if (cliente == null) {
+        if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty() || cliente.getSenha().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cliente não localizado.");
             return;
         }
@@ -100,7 +113,7 @@ public class ClienteService {
         }
 
         Clientes cliente = clienteDao.findById(clienteId);
-        if (cliente == null) {
+        if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty() || cliente.getSenha().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cliente não localizado.");
             return;
         }

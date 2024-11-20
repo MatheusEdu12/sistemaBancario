@@ -4,6 +4,8 @@
  */
 package com.mycompany.appbanco.view;
 
+import com.mycompany.appbanco.service.ClienteService;
+
 /**
  *
  * @author matheus
@@ -142,11 +144,23 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
-        // TODO add your handling code here:
+        ClienteService service = new ClienteService();
+        
+        String cpf = jtfCPF.getText();
+        String senha = jtfSenha.getText();
+        
+        boolean sucesso = service.logar(cpf, senha);
+        
+        if (sucesso) {
+            new PaginaPrincipal().setVisible(sucesso);
+            dispose();
+        }
+        
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        // TODO add your handling code here:
+        new CadastroUsuario().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
