@@ -13,6 +13,7 @@ import java.util.Objects;
  * @author matheus
  */
 @Entity
+@Table(name = "Clientes")
 public class Clientes {
     
     @Id
@@ -34,6 +35,7 @@ public class Clientes {
         this.cpf = cpf;
         this.chavePix = cpf;
         this.senha = senha;
+        this.saldo = BigDecimal.ZERO;
     }
 
     public Long getId() {
@@ -96,11 +98,11 @@ public class Clientes {
     }
 
     public void depositar(BigDecimal valor) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        saldo = saldo.add(valor);
     }
 
     public void sacar(BigDecimal valor) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        saldo = saldo.subtract(valor);
     }
 
 

@@ -4,7 +4,10 @@
  */
 package com.mycompany.appbanco.view;
 
+import com.mycompany.appbanco.model.Clientes;
 import com.mycompany.appbanco.service.ClienteService;
+import com.mycompany.appbanco.view.PaginaPrincipal;
+import java.util.Objects;
 
 /**
  *
@@ -80,12 +83,6 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jLabel))
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanelLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlSenha)
@@ -99,14 +96,23 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jbEntrar)
                         .addGap(74, 74, 74)
                         .addComponent(jbCadastrar)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(273, 273, 273))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel)
+                        .addGap(198, 198, 198))))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jLabel)
-                .addGap(33, 33, 33)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel5)
                 .addGap(38, 38, 38)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -120,24 +126,18 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEntrar)
                     .addComponent(jbCadastrar))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(226, Short.MAX_VALUE))
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -149,10 +149,10 @@ public class Login extends javax.swing.JFrame {
         String cpf = jtfCPF.getText();
         String senha = jtfSenha.getText();
         
-        boolean sucesso = service.logar(cpf, senha);
+        Clientes cliente = service.logar(cpf, senha);
         
-        if (sucesso) {
-            new PaginaPrincipal().setVisible(sucesso);
+        if (!Objects.equals(cliente, null)) {
+            new PaginaPrincipal(cliente).setVisible(true);
             dispose();
         }
         

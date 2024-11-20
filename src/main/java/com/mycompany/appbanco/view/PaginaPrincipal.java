@@ -4,6 +4,11 @@
  */
 package com.mycompany.appbanco.view;
 
+import com.mycompany.appbanco.model.Clientes;
+import com.mycompany.appbanco.service.ClienteService;
+import java.math.BigDecimal;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author matheus
@@ -13,8 +18,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PaginaPrincipal
      */
+    private Clientes cliente;
+    private ClienteService service;
+    
     public PaginaPrincipal() {
         initComponents();
+    }
+
+    public PaginaPrincipal(Clientes cliente) {
+        initComponents();
+        this.cliente = cliente;
+        service = new ClienteService();
+        
     }
 
     /**
@@ -26,21 +41,261 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel = new javax.swing.JLabel();
+        jbSacar = new javax.swing.JButton();
+        jbTransferir = new javax.swing.JButton();
+        jbDepositar = new javax.swing.JButton();
+        jbVerSaldo = new javax.swing.JButton();
+        jbSair = new javax.swing.JButton();
+        jbAlterarChave = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jbExcluirConta = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(java.awt.Color.white);
+
+        jLabel.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel.setText("Sistema Bancário");
+
+        jbSacar.setBackground(java.awt.Color.lightGray);
+        jbSacar.setText("Sacar");
+        jbSacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSacarActionPerformed(evt);
+            }
+        });
+
+        jbTransferir.setBackground(java.awt.Color.lightGray);
+        jbTransferir.setText("Transferir");
+        jbTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbTransferirActionPerformed(evt);
+            }
+        });
+
+        jbDepositar.setBackground(java.awt.Color.lightGray);
+        jbDepositar.setText("Depositar");
+        jbDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDepositarActionPerformed(evt);
+            }
+        });
+
+        jbVerSaldo.setBackground(java.awt.Color.lightGray);
+        jbVerSaldo.setText("Ver Saldo");
+        jbVerSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVerSaldoActionPerformed(evt);
+            }
+        });
+
+        jbSair.setBackground(java.awt.Color.lightGray);
+        jbSair.setText("Sair");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
+
+        jbAlterarChave.setBackground(java.awt.Color.lightGray);
+        jbAlterarChave.setText("Alterar Chave");
+        jbAlterarChave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarChaveActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel5.setText("Menu Principal");
+
+        jbExcluirConta.setBackground(java.awt.Color.lightGray);
+        jbExcluirConta.setText("Excluir Conta");
+        jbExcluirConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirContaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbVerSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jbSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbSair, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jbAlterarChave, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbExcluirConta, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(86, 118, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel)
+                .addGap(211, 211, 211))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbVerSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbExcluirConta, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbAlterarChave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jbSair, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSacarActionPerformed
+        String valorSaque = JOptionPane.showInputDialog(this, 
+            "Digite o valor do saque:", 
+            "Saque", 
+            JOptionPane.PLAIN_MESSAGE);
+    
+        // Verifica se o valor foi inserido ou a ação foi cancelada
+        if (valorSaque != null && !valorSaque.trim().isEmpty()) {            
+            BigDecimal valor = new BigDecimal(valorSaque);            
+            service.sacar(cliente.getId(), valor);
+        }
+    }//GEN-LAST:event_jbSacarActionPerformed
+
+    private void jbTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTransferirActionPerformed
+        // Solicitar a chave PIX do destinatário
+        String chavePix = JOptionPane.showInputDialog(this, "Digite a chave PIX do destinatário: ");
+
+        // Verificar se o usuário cancelou a entrada
+        if (chavePix == null || chavePix.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Chave PIX não informada. A transferência foi cancelada.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Solicitar o valor da transferência
+        String valorStr = JOptionPane.showInputDialog(this, "Digite o valor para transferir:");
+        
+        // Verificar se o valor é válido
+        if (valorStr == null || valorStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Valor não informado. A transferência foi cancelada.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Converter o valor para BigDecimal
+            BigDecimal valor = new BigDecimal(valorStr);
+
+            // Verificar se o valor é positivo
+            if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+                JOptionPane.showMessageDialog(this, "O valor para transferência deve ser positivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            service.transferir(cliente.getId(), chavePix, valor);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Valor inválido. Por favor, insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbTransferirActionPerformed
+
+    private void jbDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDepositarActionPerformed
+        String valorDeposito = JOptionPane.showInputDialog(this, 
+            "Digite o valor do depósito:", 
+            "Depósito", 
+            JOptionPane.PLAIN_MESSAGE);
+    
+        // Verifica se o valor foi inserido ou a ação foi cancelada
+        if (valorDeposito != null && !valorDeposito.trim().isEmpty()) {            
+            BigDecimal valor = new BigDecimal(valorDeposito);            
+            service.depositar(cliente.getId(), valor);
+        }
+    }//GEN-LAST:event_jbDepositarActionPerformed
+
+    private void jbVerSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerSaldoActionPerformed
+        Clientes clienteSaldo = service.findById(this.cliente.getId());
+        JOptionPane.showMessageDialog(null, "Seu saldo: R$ " + clienteSaldo.getSaldo());
+    }//GEN-LAST:event_jbVerSaldoActionPerformed
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        int resposta = JOptionPane.showConfirmDialog(
+            this, // Contexto (use null se não estiver dentro de um JFrame)
+            "Tem certeza de que deseja sair da conta?", // Mensagem
+            "Confirmação", // Título da janela
+            JOptionPane.YES_NO_OPTION, // Tipo de opção (Sim/Não)
+            JOptionPane.WARNING_MESSAGE // Tipo de ícone
+        );
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            new Login().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jbSairActionPerformed
+
+    private void jbAlterarChaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarChaveActionPerformed
+        String chavePix = JOptionPane.showInputDialog(this, 
+            "Digite a nova chave pix:", 
+            "Chave Pix", 
+            JOptionPane.PLAIN_MESSAGE);
+    
+        // Verifica se o valor foi inserido ou a ação foi cancelada
+        if (chavePix != null && !chavePix.trim().isEmpty()) {
+            chavePix = chavePix.trim();            
+            service.alterarChavePix(cliente.getId(), chavePix);
+        }
+    }//GEN-LAST:event_jbAlterarChaveActionPerformed
+
+    private void jbExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirContaActionPerformed
+        int resposta = JOptionPane.showConfirmDialog(
+            this, // Contexto (use null se não estiver dentro de um JFrame)
+            "Tem certeza de que deseja excluir a conta?", // Mensagem
+            "Confirmação", // Título da janela
+            JOptionPane.YES_NO_OPTION, // Tipo de opção (Sim/Não)
+            JOptionPane.WARNING_MESSAGE // Tipo de ícone
+        );
+
+        if (resposta == JOptionPane.YES_OPTION) { // Chame o método para excluir a conta
+            service.deletarCliente(cliente.getId());
+            new Login().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jbExcluirContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +333,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbAlterarChave;
+    private javax.swing.JButton jbDepositar;
+    private javax.swing.JButton jbExcluirConta;
+    private javax.swing.JButton jbSacar;
+    private javax.swing.JButton jbSair;
+    private javax.swing.JButton jbTransferir;
+    private javax.swing.JButton jbVerSaldo;
     // End of variables declaration//GEN-END:variables
 }

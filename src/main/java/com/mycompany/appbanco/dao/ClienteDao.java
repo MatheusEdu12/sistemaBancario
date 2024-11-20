@@ -16,11 +16,11 @@ public class ClienteDao {
     }
     
     public Clientes findById(Long clienteId) {
-    try {
-        return em.find(Clientes.class, clienteId); // Busca o cliente pelo ID
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null; // Retorna null em caso de erro
+        try {
+            return em.find(Clientes.class, clienteId); // Busca o cliente pelo ID
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Retorna null em caso de erro
     }
 }
 
@@ -60,7 +60,7 @@ public class ClienteDao {
         Clientes clienteTransferidor = em.find(Clientes.class, idTransferidor);
 
         // Buscar o cliente recebedor pela chave PIX
-        Clientes clienteRecebedor = em.createQuery("SELECT c FROM Cliente c WHERE c.chavePix = :chavePix", Clientes.class)
+        Clientes clienteRecebedor = em.createQuery("SELECT c FROM Clientes c WHERE c.chavePix = :chavePix", Clientes.class)
                                         .setParameter("chavePix", chavePixRecebedor)
                                         .getSingleResult();
 
@@ -85,15 +85,15 @@ public class ClienteDao {
         em.getTransaction().commit();
     }
 
-    public boolean login(String cpf, String senha) {
+    public Clientes login(String cpf, String senha) {
         try {
             Clientes cliente = em.createQuery("SELECT c FROM Clientes c WHERE c.cpf = :cpf AND c.senha = :senha", Clientes.class)
                                  .setParameter("cpf", cpf)
                                  .setParameter("senha", senha)
                                  .getSingleResult();
-            return cliente != null;
+            return cliente;
         } catch (NoResultException e) {
-            return false;
+            return null;
         }
     }
 

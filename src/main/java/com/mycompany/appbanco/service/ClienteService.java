@@ -4,6 +4,7 @@ import com.mycompany.appbanco.dao.ClienteDao;
 import com.mycompany.appbanco.model.Clientes;
 import com.mycompany.appbanco.view.PaginaPrincipal;
 import java.math.BigDecimal;
+import java.util.Objects;
 import javax.swing.JOptionPane;
 
 public class ClienteService {
@@ -15,15 +16,15 @@ public class ClienteService {
         clienteDao = new ClienteDao();
     }
     
-    public boolean logar(String cpf, String senha) {
+    public Clientes logar(String cpf, String senha) {
         
-        boolean sucesso = clienteDao.login(cpf, senha);  
-        if (sucesso) {
-            return sucesso;
+        Clientes cliente = clienteDao.login(cpf, senha);  
+        if (!Objects.equals(cliente, null)) {
+            return cliente;
             
         }
         JOptionPane.showMessageDialog(null, "CPF ou Senha não localizados..");
-        return false;
+        return null;
     }
 
     // Método para inserir um cliente
@@ -72,7 +73,7 @@ public class ClienteService {
 
         // Chama o método de saque no DAO
         clienteDao.sacar(clienteId, valor);
-        JOptionPane.showMessageDialog(null, "Saque realizado com sucesso!ó");
+        JOptionPane.showMessageDialog(null, "Saque realizado com sucesso!");
     }
 
     // Método para depositar em um cliente
@@ -95,6 +96,13 @@ public class ClienteService {
 
     // Método para realizar transferência entre clientes
     public void transferir(Long idTransferidor, String chavePixRecebedor, BigDecimal valor) {
+        Clientes cliente = clienteDao.findById(idTransferidor);
+
+        if (cliente.getSaldo().compareTo(valor) < 0) {
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar a transferência.");
+            return;
+        }
+        
         if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
             JOptionPane.showMessageDialog(null, "Valor de transferência inválido.");
             return;
@@ -102,7 +110,7 @@ public class ClienteService {
 
         // Chama o método de transferência no DAO
         clienteDao.transferir(idTransferidor, chavePixRecebedor, valor);
-        JOptionPane.showMessageDialog(null, "Transferencia realizada com sucesso!");
+        JOptionPane.showMessageDialog(null, "Transferência realizada com sucesso!");
     }
 
     // Método para alterar a chave PIX de um cliente
@@ -121,5 +129,9 @@ public class ClienteService {
         // Chama o método de alteração da chave PIX no DAO
         clienteDao.alterarChavePix(clienteId, novaChavePix);
         JOptionPane.showMessageDialog(null, "Sua chave pix foi alterada com sucesso!");
+    }
+
+    public Clientes findById(Long id) {
+        return clienteDao.findById(id);
     }
 }
