@@ -177,11 +177,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         boolean sucesso = service.inserirCliente(cliente);
         
         if (sucesso) {
-            jtfNome.setText("");
-            jtfCPF.setText("");
-            jtfSenha.setText("");
-
-            new Login().setVisible(true);
+            Login paginaLogin = new Login();
+            paginaLogin.setLocationRelativeTo(null); 
+            paginaLogin.setVisible(true);
             dispose();
         }
         
@@ -189,7 +187,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
-        new Login().setVisible(true);
+        Login paginaLogin = new Login();
+        paginaLogin.setLocationRelativeTo(null); 
+        paginaLogin.setVisible(true);
         dispose();
     }//GEN-LAST:event_jbVoltarActionPerformed
 

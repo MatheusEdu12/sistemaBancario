@@ -263,7 +263,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         );
 
         if (resposta == JOptionPane.YES_OPTION) {
-            new Login().setVisible(true);
+            Login paginaLogin = new Login();
+            paginaLogin.setLocationRelativeTo(null); 
+            paginaLogin.setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jbSairActionPerformed
@@ -292,7 +294,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         if (resposta == JOptionPane.YES_OPTION) { // Chame o método para excluir a conta
             service.deletarCliente(cliente.getId());
-            new Login().setVisible(true);
+            Login paginaLogin = new Login();
+            paginaLogin.setLocationRelativeTo(null); 
+            paginaLogin.setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jbExcluirContaActionPerformed

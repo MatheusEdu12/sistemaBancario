@@ -152,14 +152,19 @@ public class Login extends javax.swing.JFrame {
         Clientes cliente = service.logar(cpf, senha);
         
         if (!Objects.equals(cliente, null)) {
-            new PaginaPrincipal(cliente).setVisible(true);
+            PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
+            paginaPrincipal.setLocationRelativeTo(null); 
+            paginaPrincipal.setVisible(true);
             dispose();
+            
         }
         
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        new CadastroUsuario().setVisible(true);
+        CadastroUsuario paginaCadastro = new CadastroUsuario();
+        paginaCadastro.setLocationRelativeTo(null); 
+        paginaCadastro.setVisible(true);
         dispose();
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
