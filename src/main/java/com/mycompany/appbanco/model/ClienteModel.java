@@ -5,6 +5,7 @@
 package com.mycompany.appbanco.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -21,11 +22,12 @@ public class ClienteModel {
     private String cpf;
     private String senha;
     private String chavePix;
-    private Double saldo;
+    private BigDecimal saldo;
 
     public ClienteModel(String nome, String cpf, String senha) {
         this.nome = nome;
         this.cpf = cpf;
+        this.chavePix = cpf;
         this.senha = senha;
     }
 
@@ -57,13 +59,14 @@ public class ClienteModel {
         this.chavePix = chavePix;
     }
 
-    public Double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
+
 
     @Override
     public int hashCode() {
@@ -85,6 +88,14 @@ public class ClienteModel {
         }
         final ClienteModel other = (ClienteModel) obj;
         return Objects.equals(this.id, other.id);
+    }
+
+    public void depositar(BigDecimal valor) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void sacar(BigDecimal valor) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 
