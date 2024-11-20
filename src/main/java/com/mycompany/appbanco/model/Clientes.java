@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author matheus
  */
 @Entity
-public class ClienteModel {
+public class Clientes {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,12 @@ public class ClienteModel {
     private String chavePix;
     private BigDecimal saldo;
 
-    public ClienteModel(String nome, String cpf, String senha) {
+    public Clientes() {
+    }
+    
+    
+
+    public Clientes(String nome, String cpf, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.chavePix = cpf;
@@ -86,7 +91,7 @@ public class ClienteModel {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ClienteModel other = (ClienteModel) obj;
+        final Clientes other = (Clientes) obj;
         return Objects.equals(this.id, other.id);
     }
 

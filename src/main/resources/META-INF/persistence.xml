@@ -6,9 +6,9 @@
         
         <properties>
             <!-- Configuração do banco de dados -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/meubanco"/>
-            <property name="jakarta.persistence.jdbc.user" value="usuario"/>
-            <property name="jakarta.persistence.jdbc.password" value="senha"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sistemabanco"/>
+            <property name="jakarta.persistence.jdbc.user" value="matheus"/>
+            <property name="jakarta.persistence.jdbc.password" value="senhabanco"/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             
             <!-- Ação de geração de schema (pode ser: 'create', 'update', 'none') -->

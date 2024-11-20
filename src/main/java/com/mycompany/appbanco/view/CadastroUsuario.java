@@ -4,6 +4,9 @@
  */
 package com.mycompany.appbanco.view;
 
+import com.mycompany.appbanco.model.Clientes;
+import com.mycompany.appbanco.service.ClienteService;
+
 /**
  *
  * @author matheus
@@ -174,7 +177,21 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        // TODO add your handling code here:
+        ClienteService service = new ClienteService();
+  
+        String nome = jtfNome.getText();
+        String cpf = jtfCPF.getText();
+        String senha = jtfSenha.getText();
+        
+        Clientes cliente = new Clientes(nome, cpf, senha);
+  
+        service.inserirCliente(cliente);
+        
+        
+        
+        jtfNome.setText("");
+        jtfCPF.setText("");
+        jtfSenha.setText("");
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
